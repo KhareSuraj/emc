@@ -53,7 +53,7 @@ public class TestDb extends HttpServlet {
 						String question = myRs.getString("question");
 						out.println(question);
 					}
-					
+					//result
 					
 					
 				}catch(Exception exc) {
