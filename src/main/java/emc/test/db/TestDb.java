@@ -14,21 +14,19 @@ import java.sql.Statement;
 
 import javax.sql.DataSource;
 
-import app.emc.util.DBUtil;
+
 
 /**
  * Servlet implementation class TestDb
  */
 public class TestDb extends HttpServlet {
+	
+	@Resource(name="jdbc/emc")
+	private DataSource dataSource;
+	
 	private static final long serialVersionUID = 1L;
        
-	//Define datasource/connection pool for Resource Injection
-	private Connection conn;
 	
-	public TestDb() {
-		conn = DBUtil.getConnection();
-	}
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -39,10 +37,11 @@ public class TestDb extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				response.setContentType("text/plain");
 				
-				
+				Connection conn = null;
 				Statement myStmt = null;
 				ResultSet myRs = null;
 				try {
+					conn = dataSource.getConnection();
 					//Create a sql statement
 					String sql = "Select * from questions";
 					myStmt= conn.createStatement();
