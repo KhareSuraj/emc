@@ -24,6 +24,12 @@ public class Question {
 		this.question = question;
 	}
 	
+
+	@Override
+	public String toString() {
+		return "Question [questionId=" + questionId + ", question=" + question + "]";
+	}
+	
 	
 	
 	
