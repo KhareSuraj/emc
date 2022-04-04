@@ -4,10 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link type= "text/css" rel="stylesheet" href="admin/candidates/css/style.css">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
+		<div id ="wrapper">
+		<div id="header">
+		<h2>Candidate List</h2>
+		
+		</div>
+	</div>
+	<div id="Container">
+	<div id="Content">
+	
+	<!-- Setup URL FOR add button -->
+	<c:url var="add" value="CandidateControllerServlet">
+		<c:param name ="command" value="add"/>
+	</c:url>
+	<a href="${add}">Add Candidate</a>
+	
  <table>
 	<tr>
   		<th>Surname</th>
@@ -25,8 +41,8 @@
   		<td> ${candidates.firstname}</td>
   		<td> ${candidates.party}</td>
   		<td> ${candidates.age}</td>
-  		<td> ${candidates.party}</td>
   		<td> ${candidates.profession}</td>
+  		
   		<td><a href="">Update</a>
   		     | <a href ="">Delete</a>
   		
@@ -35,5 +51,8 @@
   
   </c:forEach>
    </table>
+   	</div>
+	
+	</div>
 </body>
 </html>

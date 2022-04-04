@@ -44,7 +44,32 @@ public class CandidateControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			listCandidates(request,response);
+			//read the "command" parameter
+			String theCommand= request.getParameter("command");
+			
+			
+			//if the command is missing, then default to listing students
+			if (theCommand == null) {
+				theCommand="LIST";
+				
+				
+			}
+			
+			//route the appropriate code
+			switch(theCommand) {
+			
+			case "LIST":
+				listCandidates(request,response);
+				break;
+				
+			case "add":
+				showForm(request,response);
+				break;
+				
+			default:
+				listCandidates(request, response);
+			}
+
 		}
 		catch(Exception exc) {
 			throw new ServletException(exc);
@@ -53,6 +78,58 @@ public class CandidateControllerServlet extends HttpServlet {
 
 
 	}
+	
+	
+
+	private void showForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/candidates/add.jsp");
+			dispatcher.forward(request, response);	
+		
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try {
+			addCandidate(request,response);
+			
+		}catch(Exception exc){
+			
+			throw new ServletException(exc);
+			
+		}
+	}
+
+	private void addCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		//Read Candidate info form data
+		String surname= request.getParameter("surname");
+		String firstname= request.getParameter("firstname");
+		String party= request.getParameter("party");
+		String profession= request.getParameter("profession");
+		int age= Integer.parseInt(request.getParameter("age"));
+		String username= request.getParameter("username");
+		String password= request.getParameter("password");
+		
+		
+		//create a new candidate object
+		Candidate theCandidate = new Candidate(surname, firstname, party, profession, age, username, password);
+		
+		
+		
+		//add the candidate to the database
+		candidateDao.insertCandidate(theCandidate);
+		
+		//send back to main page (the candidate list)
+		listCandidates(request, response);
+		
+	}
+	
+	
+	
+	
+
 
 	private void listCandidates(HttpServletRequest request, HttpServletResponse response)
 		throws Exception{
