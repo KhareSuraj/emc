@@ -1,6 +1,7 @@
-package app.emc.DAO;
+ package app.emc.DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -48,11 +49,74 @@ public class QuestionDAO {
 		    }
 		    return questions;
 		}finally {
-			conn.close();
-			stmt.close();
+			
 			rs.close();
+			stmt.close();
+			conn.close();
+			
 		}
 
+	}
+	
+	public Question getQuestionById(int questionId) throws Exception {
+		
+		Question question;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			String query ="select * from questions where question_id=?";
+			
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setInt(1, questionId); 
+			
+			rs=stmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				String questionData = rs.getString("question");
+				
+				question = new Question(questionId,questionData);
+				
+			}else {
+				throw new Exception("Could not find question with questionid : "+questionId);
+			}
+			return question;	
+		
+		}finally {
+			//Close JDBC Objects
+			rs.close();
+			stmt.close();
+			conn.close();
+			
+		}
+		
+	}
+	
+	public void updateQuestion(Question question) throws Exception {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn= dataSource.getConnection();
+			
+			String query = "update questions set question=? where question_id=?";
+			
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setString(1,question.getQuestion());
+			stmt.setInt(2, question.getQuestionId());
+			
+			stmt.execute();
+					
+		}finally {
+			conn.close();
+			stmt.close();
+		}
 	}
 	
 
