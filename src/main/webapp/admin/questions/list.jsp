@@ -9,10 +9,11 @@
 </head>
 <body>
 
-	<!-- add a new button: add question -->
-	<input type = "button" value="Add Question" 
-	onclick ="window.location.href='add-question-form.jsp'; return false;"
-	class ="add-question-button"
+	<!-- Setup URL for ADD QUESTION BUTTON -->
+	<c:url var="add" value="QuestionControllerServlet">
+		<c:param name="action" value="add"/>
+	</c:url>
+	<a href="${add}">ADD QUESTION</a>
 	/>
  <table>
 	<tr>

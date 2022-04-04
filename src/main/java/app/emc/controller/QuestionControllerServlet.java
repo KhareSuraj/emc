@@ -47,18 +47,18 @@ public class QuestionControllerServlet extends HttpServlet {
 
 		try {
 			//read the question,command parameter
-			String theCommand = request.getParameter("command");
+			String action= request.getParameter("action");
 			//if command is null
-			if(theCommand == null){
-				theCommand = "LIST";
+			if(action == null){
+				action = "LIST";
 			}
 			//route to the appropriate method
-			switch (theCommand) {
+			switch (action) {
 			case "LIST":
 				listQuestions(request, response);
 				break;
-			case "ADD":
-				addQuestion(request,response);
+			case "add":
+				showForm(request,response);
 				break;
 				
 			default:
@@ -75,6 +75,22 @@ public class QuestionControllerServlet extends HttpServlet {
 
 
 	}
+	
+	
+
+	
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			
+			addQuestion(request,response);
+			
+		}catch(Exception exc) {
+			throw new ServletException(exc);
+		}
+		
+	}
 
 	private void addQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -84,7 +100,7 @@ public class QuestionControllerServlet extends HttpServlet {
 		
 		questionDao.insertQuestion(nQuestion);
 		
-		listQuestions(request,response);
+		response.sendRedirect("QuestionControllerServlet");
 		
 	}
 
@@ -101,6 +117,13 @@ public class QuestionControllerServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/questions/list.jsp");
 		dispatcher.forward(request, response);
 
+	}
+	
+	private void showForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/questions/add.jsp");
+		dispatcher.forward(request,response);
+		
 	}
 
 
