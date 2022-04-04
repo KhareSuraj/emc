@@ -27,6 +27,8 @@ public class Candidate {
 		this.password = password;
 	}
 	
+	
+
 	public Candidate(int candidateId, String surname, String firstname, String party, String profession, int age) {
 		this.candidateId = candidateId;
 		this.surname = surname;
@@ -35,6 +37,22 @@ public class Candidate {
 		this.profession = profession;
 		this.age = age;
 	}
+
+
+
+	public Candidate(String surname, String firstname, String party, String profession, int age, String username,
+			String password) {
+		super();
+		this.surname = surname;
+		this.firstname = firstname;
+		this.party = party;
+		this.profession = profession;
+		this.age = age;
+		this.username = username;
+		this.password = password;
+	}
+
+
 
 	public int getCandidateId() {
 		return candidateId;
