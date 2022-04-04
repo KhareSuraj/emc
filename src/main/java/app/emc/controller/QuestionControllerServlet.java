@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import app.emc.DAO.QuestionDAO;
 import app.emc.model.Question;
+import app.emc.util.DBUtil;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -45,6 +46,26 @@ public class QuestionControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
+			//read the question,command parameter
+			String theCommand = request.getParameter("command");
+			//if command is null
+			if(theCommand == null){
+				theCommand = "LIST";
+			}
+			//route to the appropriate method
+			switch (theCommand) {
+			case "LIST":
+				listQuestions(request, response);
+				break;
+			case "ADD":
+				addQuestion(request,response);
+				break;
+				
+			default:
+				listQuestions(request,response);
+			}
+			
+			//list the questions
 			listQuestions(request,response);
 		}
 		catch(Exception exc) {
@@ -53,6 +74,18 @@ public class QuestionControllerServlet extends HttpServlet {
 
 
 
+	}
+
+	private void addQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String question = request.getParameter("question");
+		
+		Question nQuestion = new Question(question);
+		
+		questionDao.insertQuestion(nQuestion);
+		
+		listQuestions(request,response);
+		
 	}
 
 	private void listQuestions(HttpServletRequest request, HttpServletResponse response)

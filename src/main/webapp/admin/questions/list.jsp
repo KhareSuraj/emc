@@ -8,6 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<!-- add a new button: add question -->
+	<input type = "button" value="Add Question" 
+	onclick ="window.location.href='add-question-form.jsp'; return false;"
+	class ="add-question-button"
+	/>
  <table>
 	<tr>
   		<th>Question</th>
