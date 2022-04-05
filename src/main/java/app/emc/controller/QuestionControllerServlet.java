@@ -71,30 +71,12 @@ public class QuestionControllerServlet extends HttpServlet {
 		}
 		
 
+		
 
 
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			try {
-				String action = request.getParameter("action");
-				switch(action) {
-				
-				case "saveupdate":
-				updateQuestion(request,response);
-				break;
-				
-				
-				}
-			
-			} 
-			catch(Exception exc) {
-				throw new ServletException(exc);
-			}
-			
-		
-	}
+
 
 	private void listQuestions(HttpServletRequest request, HttpServletResponse response)
 		throws Exception{
