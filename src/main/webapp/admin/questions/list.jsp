@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -28,11 +29,18 @@
    		<c:param name="action" value="update" />
    		<c:param name="id" value ="${questions.questionId}"/>;  /questions/?action=update&id=1
    </c:url>
+   
+    <c:url var="delete" value="QuestionControllerServlet">
+  		<c:param name="action" value="delete" />
+  		<c:param name= "QuestionId" value="${questions.questionId}" />
+  		</c:url>
+		<td>
+  		
   	
   	<tr>
   		<td> ${questions.question} </td>
   		<td><a href="${update}">Update</a>
-  		     | <a href ="">Delete</a>
+  		     | <a href="${delete}">Delete</a>
   		
   		</td>
   	</tr>

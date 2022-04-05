@@ -63,6 +63,10 @@ public class QuestionControllerServlet extends HttpServlet {
 			case "add":
 				showForm(request,response);
 				
+			case "delete":
+				deleteQuestion(request, response);
+				break;
+				
 			default:
 				listQuestions(request,response);
 			
@@ -79,6 +83,18 @@ public class QuestionControllerServlet extends HttpServlet {
 	}
 	
 
+
+	private void deleteQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		//Read questions id  from data
+		int question_id = Integer.parseInt(request.getParameter("QuestionId"));
+		
+		//delete question from database
+		questionDao.deleteQuestion(question_id);
+		
+		//Send them back to the list question page. 
+		listQuestions(request, response);
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
