@@ -95,6 +95,40 @@ public class CandidateDAO {
 		}
 		
 	}
+
+	public void deleteCandidate(String CandidateId) throws Exception {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			
+			//convert candidate id to int
+			int candidateId = Integer.parseInt(CandidateId);
+			
+			// get connection to database
+			conn=dataSource.getConnection();
+			
+			// create sql statement to delete database
+			String sql="delete from candidates where candidate_id=?";
+			
+			//prepare statement
+			stmt = conn.prepareStatement(sql);
+			
+			//params setting
+			stmt.setInt(1,candidateId);
+			
+			//executing sql statement
+			stmt.execute();
+			
+			
+		} finally {
+		
+			stmt.close();
+			conn.close();
+		}
+		
+	}
 	
 
 }

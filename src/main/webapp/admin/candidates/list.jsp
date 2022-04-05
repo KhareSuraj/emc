@@ -43,9 +43,13 @@
   		<td> ${candidates.age}</td>
   		<td> ${candidates.profession}</td>
   		
-  		<td><a href="">Update</a>
-  		     | <a href ="">Delete</a>
+  		<td><a href="">Update</a>|
   		
+  		    <c:url var="delete" value="CandidateControllerServlet">
+  		<c:param name="command" value="delete" />
+  		<c:param name= "CandidateId" value="${candidates.candidateId}" />
+  		</c:url>
+  		<a href="${candidates.candidateId}">Delete</a>
   		</td>
   	</tr>
   

@@ -48,7 +48,7 @@ public class CandidateControllerServlet extends HttpServlet {
 			String theCommand= request.getParameter("command");
 			
 			
-			//if the command is missing, then default to listing students
+			//if the command is missing, then default to listing candidates
 			if (theCommand == null) {
 				theCommand="LIST";
 				
@@ -66,6 +66,10 @@ public class CandidateControllerServlet extends HttpServlet {
 				showForm(request,response);
 				break;
 				
+			case "delete":
+				deleteCandidate(request,response);
+				break;
+				
 			default:
 				listCandidates(request, response);
 			}
@@ -80,6 +84,21 @@ public class CandidateControllerServlet extends HttpServlet {
 	}
 	
 	
+
+	private void deleteCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		//read candidate id
+		String Candidate_id = request.getParameter("candidate_id");
+		
+		//delete candidate from database
+		candidateDao.deleteCandidate(Candidate_id);
+		
+		//send them back to the candidate list-
+		listCandidates (request, response);
+		
+		
+		
+	}
 
 	private void showForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -122,7 +141,9 @@ public class CandidateControllerServlet extends HttpServlet {
 		candidateDao.insertCandidate(theCandidate);
 		
 		//send back to main page (the candidate list)
-		listCandidates(request, response);
+		response.sendRedirect("CandidateControllerServlet");
+		
+		
 		
 	}
 	
