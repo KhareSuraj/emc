@@ -3,6 +3,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,27 @@ public class QuestionDAO {
 			
 		}
 
+	}
+
+	public void insertQuestion(Question question) throws SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			
+			String sql ="insert into emc.questions(question) values(?)";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,question.getQuestion());
+			stmt.execute();
+		}
+		finally {
+			conn.close();
+			stmt.close();
+		}
+		}
+		
+		
 	}
 	
 	public Question getQuestionById(int questionId) throws Exception {
@@ -120,4 +142,8 @@ public class QuestionDAO {
 	}
 	
 
-}
+
+
+
+
+	

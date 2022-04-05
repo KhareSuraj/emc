@@ -39,4 +39,14 @@
     <servlet-name>CandidateControllerServlet</servlet-name>
     <url-pattern>/CandidateControllerServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>demoServlet</display-name>
+    <servlet-name>demoServlet</servlet-name>
+    <servlet-class>app.emc.controller.demoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demoServlet</servlet-name>
+    <url-pattern>/demoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

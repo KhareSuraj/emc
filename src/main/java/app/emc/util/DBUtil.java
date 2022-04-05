@@ -3,10 +3,12 @@ package app.emc.util;
 
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import app.emc.model.Question;
 import jakarta.annotation.Resource;
 
 
@@ -29,6 +31,12 @@ public class DBUtil {
 		}
 		
 		return conn;
+	}
+	//created to add question 
+	public static void addQuestion(Question theQuestion) {
+		// 
+
+		
 	}
 	
 

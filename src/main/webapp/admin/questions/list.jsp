@@ -8,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<!-- Setup URL for ADD QUESTION BUTTON -->
+	<c:url var="add" value="QuestionControllerServlet">
+		<c:param name="action" value="add"/>
+	</c:url>
+	<a href="${add}">ADD QUESTION</a>
+	/>
  <table>
 	<tr>
   		<th>Question</th>

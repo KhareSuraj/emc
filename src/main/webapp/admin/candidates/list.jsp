@@ -35,6 +35,12 @@
   	</tr>
   	
   <c:forEach var="candidates" items="${CANDIDATES_LIST}">
+  	<!-- set up a link far each candidate-->
+  	<c:url var ="tempLink" value="CandidateControllerServlet">
+  		<c:param name ="action" value = "LOAD"/>
+  		<c:param name ="id" value ="${candidates.candidate_id }"/>
+  	
+  	</c:url>
   	
   	<tr>
   		<td> ${candidates.surname}</td>
@@ -42,8 +48,7 @@
   		<td> ${candidates.party}</td>
   		<td> ${candidates.age}</td>
   		<td> ${candidates.profession}</td>
-  		
-  		<td><a href="">Update</a>
+
   		     | <a href ="">Delete</a>
   		
   		</td>
