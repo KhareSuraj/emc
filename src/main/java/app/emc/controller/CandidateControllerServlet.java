@@ -88,7 +88,7 @@ public class CandidateControllerServlet extends HttpServlet {
 	private void deleteCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		//read candidate id
-		String Candidate_id = request.getParameter("candidate_id");
+		int Candidate_id = Integer.parseInt(request.getParameter("CandidateId"));
 		
 		//delete candidate from database
 		candidateDao.deleteCandidate(Candidate_id);

@@ -96,15 +96,12 @@ public class CandidateDAO {
 		
 	}
 
-	public void deleteCandidate(String CandidateId) throws Exception {
+	public void deleteCandidate(int CandidateId) throws Exception {
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
 		try {
-			
-			//convert candidate id to int
-			int candidateId = Integer.parseInt(CandidateId);
 			
 			// get connection to database
 			conn=dataSource.getConnection();
@@ -116,7 +113,7 @@ public class CandidateDAO {
 			stmt = conn.prepareStatement(sql);
 			
 			//params setting
-			stmt.setInt(1,candidateId);
+			stmt.setInt(1,CandidateId);
 			
 			//executing sql statement
 			stmt.execute();

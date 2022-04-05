@@ -49,7 +49,7 @@
   		<c:param name="command" value="delete" />
   		<c:param name= "CandidateId" value="${candidates.candidateId}" />
   		</c:url>
-  		<a href="${candidates.candidateId}">Delete</a>
+  		<a href="${delete}">Delete</a>
   		</td>
   	</tr>
   
