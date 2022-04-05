@@ -8,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<!-- Setup URL for ADD QUESTION BUTTON -->
+	<c:url var="add" value="QuestionControllerServlet">
+		<c:param name="action" value="add"/>
+	</c:url>
+	<a href="${add}">ADD QUESTION</a>
+	/>
  <table>
 	<tr>
   		<th>Question</th>
@@ -16,10 +23,15 @@
   	
   <c:forEach var="questions" items="${QUESTIONS_LIST}">
  
+   <!-- Setup a URL for update button -->
+   <c:url var="update" value="QuestionControllerServlet">
+   		<c:param name="action" value="update" />
+   		<c:param name="id" value ="${questions.questionId}"/>;  /questions/?action=update&id=1
+   </c:url>
   	
   	<tr>
   		<td> ${questions.question} </td>
-  		<td><a href="">Update</a>
+  		<td><a href="${update}">Update</a>
   		     | <a href ="">Delete</a>
   		
   		</td>

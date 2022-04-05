@@ -45,18 +45,71 @@ public class QuestionControllerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			listQuestions(request,response);
+			//Get action parameter from URL.
+			String action = request.getParameter("action"); //update
+			//action = update;
+			
+			if (action==null) {
+				listQuestions(request,response);
+			}
+			
+			switch(action) {
+			
+			case "update":
+				
+				loadQuestion(request,response);
+				break;
+				
+			case "add":
+				showForm(request,response);
+				
+			default:
+				listQuestions(request,response);
+			
+			}			
+			
 		}
 		catch(Exception exc) {
 			throw new ServletException(exc);
 		}
-
 		
+
 
 
 	}
 	
-	
+
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			try {
+				
+				String action = request.getParameter("action");
+				
+				if (action==null) {
+					doGet(request,response);
+				}
+				
+				switch(action) {
+				
+				case "saveupdate":
+				updateQuestion(request,response);
+				break;
+				
+				case "insert":
+				addQuestion(request,response);
+				break;
+				
+				}
+			 
+			
+			} 
+			catch(Exception exc) {
+				throw new ServletException(exc);
+			}
+			
+		
+	}
 
 	private void listQuestions(HttpServletRequest request, HttpServletResponse response)
 		throws Exception{
@@ -72,6 +125,65 @@ public class QuestionControllerServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
+	
+	private void loadQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		//Get question id from URL
+		int questionId = Integer.parseInt(request.getParameter("id")); //1
+		
+		//Get question from database (QuestionDAO)
+		Question question = questionDao.getQuestionById(questionId);//1
+		
+		//Set question in request attribute
+		
+		request.setAttribute("QUESTION", question);
+		
+		//Send to JSP page: admin/questions/update.jsp
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/questions/update.jsp");
+		dispatcher.forward(request, response);
+		
+		
+	}
+
+	private void updateQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		int questionId = Integer.parseInt(request.getParameter("id"));
+		String question = request.getParameter("question");
+		
+		Question uQuestion = new Question(questionId,question);
+		
+		questionDao.updateQuestion(uQuestion);
+		
+		response.sendRedirect("QuestionControllerServlet");	
+		
+		
+	}
+	
+	private void addQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		String question = request.getParameter("question");
+
+		Question nQuestion = new Question(question);
+
+		questionDao.insertQuestion(nQuestion);
+
+		response.sendRedirect("QuestionControllerServlet");
+
+		}
+
+	private void showForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		 
+		//Send to JSP add Form Page.
+		
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/questions/add.jsp");
+				dispatcher.forward(request, response);
+		
+	}
+	
+	
+	
+	
 
 
 
