@@ -78,7 +78,7 @@ public class QuestionDAO {
 		}
 		
 		
-	}
+	
 	
 	public Question getQuestionById(int questionId) throws Exception {
 		
@@ -140,6 +140,8 @@ public class QuestionDAO {
 			stmt.close();
 		}
 	}
+	
+}
 	
 
 

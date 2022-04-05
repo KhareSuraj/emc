@@ -13,7 +13,7 @@
 	<c:url var="insert" value="QuestionControllerServlet">
 		<c:param name="action" value="insert"/>
 	</c:url>
- <form action="QuestionControllerServlet" method = "post">
+ <form action="${insert}" method = "post">
  
  	<table>
  	<tr>
