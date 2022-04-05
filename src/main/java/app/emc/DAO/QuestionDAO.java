@@ -141,6 +141,39 @@ public class QuestionDAO {
 		}
 	}
 	
+public void deleteQuestion(int QuestionId) throws Exception {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			
+			// get connection to database
+			conn=dataSource.getConnection();
+			
+			// create sql statement to delete database
+			String sql="delete from questions where question_id=?";
+			
+			//prepare statement
+			stmt = conn.prepareStatement(sql);
+			
+			//params setting
+			stmt.setInt(1,QuestionId);
+			
+			//executing sql statement
+			stmt.execute();
+			
+			
+		} finally {
+		
+			stmt.close();
+			conn.close();
+		}
+		
+	}
+	
+
+	
 }
 	
 
