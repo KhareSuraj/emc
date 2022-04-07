@@ -10,10 +10,13 @@ public class Candidate {
 	private int age;
 	private String username;
 	private String password;
+	private String salt;
 	
 	
 	
-	
+
+
+
 	public Candidate(int candidateId, String surname, String firstname, String party, String profession, int age,
 			String username, String password) {
 		
@@ -41,7 +44,7 @@ public class Candidate {
 
 
 	public Candidate(String surname, String firstname, String party, String profession, int age, String username,
-			String password) {
+			String password,String salt) {
 		super();
 		this.surname = surname;
 		this.firstname = firstname;
@@ -50,6 +53,15 @@ public class Candidate {
 		this.age = age;
 		this.username = username;
 		this.password = password;
+		this.salt = salt;
+	}
+
+
+
+	public Candidate(String password, String salt) {
+		
+		this.password = password;
+		this.salt = salt;
 	}
 
 
@@ -102,7 +114,12 @@ public class Candidate {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 	
 	
 }

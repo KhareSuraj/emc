@@ -6,6 +6,7 @@ import java.util.List;
 import javax.sql.DataSource;
 import app.emc.DAO.CandidateDAO;
 import app.emc.model.Candidate;
+import app.emc.utils.AuthUtils;
 import jakarta.annotation.Resource;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -131,9 +132,13 @@ public class CandidateControllerServlet extends HttpServlet {
 		String username= request.getParameter("username");
 		String password= request.getParameter("password");
 		
+		//Create Salt and Hashed password
+		String salt = AuthUtils.getSalt();
+		String hashedpwd = AuthUtils.getPasswordHashed(password, salt);
+		
 		
 		//create a new candidate object
-		Candidate theCandidate = new Candidate(surname, firstname, party, profession, age, username, password);
+		Candidate theCandidate = new Candidate(surname, firstname, party, profession, age, username, hashedpwd,salt);
 		
 		
 		
