@@ -20,7 +20,7 @@
 	
 	<!-- Setup URL FOR add button -->
 	<c:url var="add" value="CandidateControllerServlet">
-		<c:param name ="command" value="add"/>
+		<c:param name ="action" value="add"/>
 	</c:url>
 	<a href="${add}">Add Candidate</a>
 	
@@ -43,12 +43,19 @@
   		<td> ${candidates.age}</td>
   		<td> ${candidates.profession}</td>
 
+  		<!-- update part -->
+  		<c:url var="update" value="CandidateControllerServlet">
+	  		<c:param name="action" value="update" />
+	  		<c:param name= "CandidateId" value="${candidates.candidateId}" />
+	  	</c:url>
   		
-  		    <c:url var="delete" value="CandidateControllerServlet">
-  		<c:param name="command" value="delete" />
-  		<c:param name= "CandidateId" value="${candidates.candidateId}" />
-  		</c:url>
+  		<c:url var="delete" value="CandidateControllerServlet">
+	  		<c:param name="action" value="delete" />
+	  		<c:param name= "CandidateId" value="${candidates.candidateId}" />
+	  	</c:url>
 		<td>
+		<a href="${update}">Update</a>
+		|
   		<a href="${delete}">Delete</a>
   		</td>
   	</tr>

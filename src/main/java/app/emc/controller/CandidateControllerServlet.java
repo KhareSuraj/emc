@@ -28,7 +28,7 @@ public class CandidateControllerServlet extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		
-		// create our student db util ... and pass in the conn pool / datasource
+		// create candidate db util ... and pass in the conn pool / datasource
 		try {
 			candidateDao = new CandidateDAO(dataSource);
 		}
@@ -45,7 +45,7 @@ public class CandidateControllerServlet extends HttpServlet {
 
 		try {
 			//read the "command" parameter
-			String theCommand= request.getParameter("command");
+			String theCommand= request.getParameter("action");
 			
 			
 			//if the command is missing, then default to listing candidates
@@ -69,6 +69,11 @@ public class CandidateControllerServlet extends HttpServlet {
 			case "delete":
 				deleteCandidate(request,response);
 				break;
+			
+			case"update":
+				loadCandidate(request,response);
+				break;
+				
 				
 			default:
 				listCandidates(request, response);
@@ -83,6 +88,77 @@ public class CandidateControllerServlet extends HttpServlet {
 
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try {
+			String command = request.getParameter("action");
+			if(command== null) {
+				doGet(request,response);
+			}
+			switch (command) {
+			
+			case"insert":
+				addCandidate(request,response);
+				break;
+				
+			case "saveupdate":
+				updateCandidate(request,response);
+				break;
+			}
+				
+			
+		}catch(Exception exc){
+			
+			throw new ServletException(exc);
+			
+		}
+	}
+	
+	private void loadCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// read candidate id
+		int Candidate_id = Integer.parseInt(request.getParameter("CandidateId"));
+
+		// get candidate from database
+		Candidate candidate = candidateDao.getCandidateById(Candidate_id);
+		// place candidate in the request attribute
+		request.setAttribute("CANDIDATE", candidate);
+		// send to jsp page: update.jsp
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/candidates/update.jsp");
+		dispatcher.forward(request, response);
+		
+	}
+	
+	
+	private void updateCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		int candidateId = Integer.parseInt(request.getParameter("candidate_id"));
+		
+		String surname= request.getParameter("surname");
+		String firstname= request.getParameter("firstname");
+		String party= request.getParameter("party");
+		String profession= request.getParameter("profession");
+		int age= Integer.parseInt(request.getParameter("age"));
+		
+		
+		
+		//create a new candidate object
+		Candidate theCandidate = new Candidate(candidateId, surname, firstname, party, profession, age);
+		
+		
+		
+		//add the candidate to the database
+		candidateDao.updateCandidate(theCandidate);
+		
+		//send back to main page (the candidate list)
+		response.sendRedirect("CandidateControllerServlet");
+		
+	}
+
+	
+	
+	
+
 	
 
 	private void deleteCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -107,18 +183,8 @@ public class CandidateControllerServlet extends HttpServlet {
 		
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try {
-			addCandidate(request,response);
-			
-		}catch(Exception exc){
-			
-			throw new ServletException(exc);
-			
-		}
-	}
+	
+	
 
 	private void addCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -147,11 +213,6 @@ public class CandidateControllerServlet extends HttpServlet {
 		
 	}
 	
-	
-	
-	
-
-
 	private void listCandidates(HttpServletRequest request, HttpServletResponse response)
 		throws Exception{
 		//Get Candidate from DAO

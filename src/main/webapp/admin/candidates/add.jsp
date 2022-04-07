@@ -22,7 +22,7 @@
 	<h3>Add Candidate</h3>
 	
 	<c:url var= "saveCandidate" value="CandidateControllerServlet">'
-		<c:param name="action" value ="saveCandidate"/>
+		<c:param name="action" value ="insert"/>
 	</c:url>
 	<form action ="${saveCandidate}" method="post">
 		<table>
