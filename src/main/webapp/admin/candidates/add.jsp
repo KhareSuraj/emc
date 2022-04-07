@@ -1,11 +1,8 @@
-<%@ include file= "/incl/head.jsp" %>
+ <%@ include file= "/incl/head.jsp" %>
+ 
+ <%@ include file= "/incl/header.jsp" %>
 
-
-<div>
-	<c:url var= "saveCandidate" value="CandidateControllerServlet">'
-		<c:param name="action" value ="insert"/>
-	</c:url>
-</div>	
+ <%@ include file= "/incl/sidebar.jsp" %>
 
 <main>
 	<div class = "pg-m">
@@ -15,7 +12,11 @@
 	    </p>
      	<h1 class="pg-heading"><i class="fa-solid fa-users"></i> New Candidate</h1>   
      </div>
-
+	<div class="pg-m">
+		<c:url var= "saveCandidate" value="CandidateControllerServlet">'
+			<c:param name="action" value ="insert"/>
+		</c:url>
+	</div>
 <form class="create-form" action ="${saveCandidate}" method="post">
 		
 		<label for="title" >Surname:</label> <br>
@@ -44,6 +45,7 @@
 	</form>
 
 </main>
+</div>
  <%@ include file= "/incl/footer.jsp" %>
 
 

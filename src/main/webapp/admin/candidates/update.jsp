@@ -1,4 +1,7 @@
  <%@ include file= "/incl/head.jsp" %>
+ <%@ include file= "/incl/header.jsp" %>
+ <%@ include file= "/incl/sidebar.jsp" %>
+ 
 
 	
 <main>
@@ -38,7 +41,7 @@
 
 </form>
 </main>
-
+</div>
 	
  <%@ include file= "/incl/footer.jsp" %>
 	
