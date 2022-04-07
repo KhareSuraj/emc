@@ -1,28 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Update Question</title>
-</head>
-<body>
-<h2>Update Question</h2>
-
+<%@ include file= "/incl/head.jsp" %>
 <!-- Setup a URL for form submit action -->
    <c:url var="saveUpdate" value="QuestionControllerServlet">
    		<c:param name="action" value="saveupdate" />
    		<c:param name="id" value ="${QUESTION.questionId}"/>;
    </c:url>
-   
-<form action="${saveUpdate}" method="post">
-	<label for ="question">Question:</label>
-	<input type="text" name ="question" size="50" value ="${QUESTION.question}"> <br><br>
-	
-	<input type="submit" value="Submit">
+ <main>  
+ <div class = "pg-m">
+     <p class="breadcrumb">
+        <a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
+            <a href="QuestionControllerServlet">Update Questions</a>
+        </p>
+        <h1 class="pg-heading"><i class="fa-solid fa-book"></i></h1>
+         
+</div>
+ 
+ 
+<form class ="create-form" action="${saveUpdate}" method="post">
+	<label for ="question">Question:</label><br>
+	<input class="txtin" type="text" name ="question" size="90" value ="${QUESTION.question}"> <br> <br>
+	<input class="btn btn-prim"  type="submit" value="save" class="submit">
 
 </form>
-
+</main>
+<%@ include file= "/incl/footer.jsp" %>
 </body>
 </html>
