@@ -156,10 +156,6 @@ public class CandidateControllerServlet extends HttpServlet {
 	}
 
 	
-	
-	
-
-	
 
 	private void deleteCandidate(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
