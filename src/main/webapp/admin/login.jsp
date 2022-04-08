@@ -1,12 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<%@ include file= "/incl/head.jsp" %>
+
 <body>
 	<form action="" method="post">
         <div class="login-box">
@@ -26,11 +19,11 @@
             
             <input class="button" type="submit"
                      name="login" value="Sign In">
-
+	 <c:if test = "${sessionScope['err'] != null }">
+         <p class="errorMsg">${sessionScope['err']}<p>
+      </c:if>
           </div> 
     </form> 
-	 <c:if test = "${sessionScope['err'] != null }">
-         <p class="error">${sessionScope['err']}<p>
-      </c:if>
+
 </body>
 </html>

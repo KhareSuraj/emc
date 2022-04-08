@@ -42,7 +42,7 @@ body{
 	margin-bottom: 50px;
 	padding: 13px;
     text-transform: uppercase;
-    background-color: #CB212E;
+    background-color: var(--primary-color);
     color: #FFFFFF;
     text-align: center;
     letter-spacing: 1px;
@@ -137,7 +137,7 @@ body{
 	  padding: 10px;
   }
   .errorMsg {
-	color: var(--primary-color);
+	color: #CB212E;
 	background-color: whitesmoke;
 	padding: 10px 10px 10px 10px;
   }
