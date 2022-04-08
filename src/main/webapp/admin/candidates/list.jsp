@@ -11,7 +11,7 @@
 	<main>
 		<div class="pg-m">
 			
-		<p class="breadcrumb"><a href=" ../main/""><i class="fa-solid fa-arrow-left"></i> Dashboard</a></p>
+		<p class="breadcrumb"><a href="${pageContext.request.contextPath}/admin/dashboard.jsp"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></p>
         <h1 class="pg-heading"><i class="fa-solid fa-person"></i> Candidates</h1>
         <a href="${add}"><button class=" btn addnew btn-prim"> NEW CANDIDATE </button></a>
 		

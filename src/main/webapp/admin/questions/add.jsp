@@ -8,7 +8,7 @@
 <main>
 <div class = "pg-m">
     <p class="breadcrumb">
-        <a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
+        <a href="${pageContext.request.contextPath}/admin/dashboard.jsp"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
             <a href="QuestionControllerServlet"> Questions</a>
         </p>
         <h1 class="pg-heading"><i class="fa-solid fa-book"></i> New Question</h1>

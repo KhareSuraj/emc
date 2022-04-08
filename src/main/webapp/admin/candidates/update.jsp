@@ -7,7 +7,7 @@
 <main>
 <div class = "pg-m">
 	    <p class="breadcrumb">
-	      <a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
+	      <a href="${pageContext.request.contextPath}/admin/dashboard.jsp"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
 	       <a href="/admin/candidates"> Candidates</a>
 	    </p>
      	<h1 class="pg-heading"><i class="fa-solid fa-users"></i>Update Candidate</h1>   
