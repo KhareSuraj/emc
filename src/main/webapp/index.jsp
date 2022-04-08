@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +34,15 @@
             	</select> 
             </div>
             
+           
+            
             <input class="button" type="submit"
                      name="login" value="Sign In">
+                     
+            <c:if test = "${sessionScope['err'] != null }">
+         <p class="error">${sessionScope['err']}<p>
+      </c:if>
+             
           </div> 
     </form> 
 </body>

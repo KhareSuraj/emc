@@ -10,7 +10,7 @@
 <body>
 
 	<!-- Setup URL for ADD QUESTION BUTTON -->
-	<c:url var="add" value="QuestionControllerServlet">
+	<c:url var="add" value="/admin/questions">
 		<c:param name="action" value="add"/>
 	</c:url>
 	<a href="${add}">ADD QUESTION</a>
@@ -24,7 +24,7 @@
   <c:forEach var="questions" items="${QUESTIONS_LIST}">
  
    <!-- Setup a URL for update button -->
-   <c:url var="update" value="QuestionControllerServlet">
+   <c:url var="update" value="/admin/questions">
    		<c:param name="action" value="update" />
    		<c:param name="id" value ="${questions.questionId}"/>;  /questions/?action=update&id=1
    </c:url>

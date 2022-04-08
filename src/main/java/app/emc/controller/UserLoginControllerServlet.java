@@ -1,11 +1,14 @@
 package app.emc.controller;
 
 import jakarta.annotation.Resource;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import javax.sql.DataSource;
@@ -37,28 +40,35 @@ public class UserLoginControllerServlet extends HttpServlet {
 			throw new ServletException(exc);
 		}
 	}
+	
+	
 
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		response.sendRedirect(request.getContextPath());
+		
 	}
+
+
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   
-		
+		//Get username , password and role from the user login form.
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String role = request.getParameter("role");
 		
 		try {
 			if(role.equals("candidate")) {
-				doCandidateLogin(request,response,username,password);
+				authenciateCandidate(request,response,username,password);
 			}
 			
 			
@@ -70,19 +80,38 @@ public class UserLoginControllerServlet extends HttpServlet {
 		
 	}
 
-	private void doCandidateLogin(HttpServletRequest request, HttpServletResponse response, String username,String password) throws Exception {
+	private void authenciateCandidate(HttpServletRequest request, HttpServletResponse response, String username,String password) throws Exception {
 		
-		Candidate cLoginInfo = candidateDao.getCandidateLoginInfo(username);
-		
+			Candidate cLoginInfo = candidateDao.getCandidateLoginInfo(username);
+			HttpSession session = request.getSession();
 			
-			String hpassword = cLoginInfo.getPassword();
-			String salt = cLoginInfo.getSalt();
-			
-			if(AuthUtils.checkPassword(hpassword, password, salt)){
-				System.out.println("Login Success");
+			if(cLoginInfo != null) {
+				
+				String salt = cLoginInfo.getSalt();
+				String hpassword = cLoginInfo.getPassword();
+				int candidateId = cLoginInfo.getCandidateId();
+				
+				if(AuthUtils.checkPassword(hpassword,password, salt)){
+					session.setAttribute("candidateId",candidateId );
+					response.getWriter().println("Login Success");
+					
+				} else {
+					
+					session.setAttribute("err", "Wrong username or password");
+					response.sendRedirect(request.getContextPath());
+					
+				}	
+				
 			}else {
-				System.out.println("Login Failed");
+				
+				session.setAttribute("err", "Wrong username or password");
+				response.sendRedirect(request.getContextPath());
+				
+				
 			}
+			
+			
+		
 			
 			
 		}

@@ -11,7 +11,7 @@
 <h2>Update Question</h2>
 
 <!-- Setup a URL for form submit action -->
-   <c:url var="saveUpdate" value="QuestionControllerServlet">
+   <c:url var="saveUpdate" value="/admin/questions">
    		<c:param name="action" value="saveupdate" />
    		<c:param name="id" value ="${QUESTION.questionId}"/>;
    </c:url>

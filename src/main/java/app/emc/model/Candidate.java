@@ -13,7 +13,9 @@ public class Candidate {
 	private String salt;
 	
 	
-	
+  public Candidate() {
+		
+	}
 
 
 
@@ -63,6 +65,10 @@ public class Candidate {
 		this.password = password;
 		this.salt = salt;
 	}
+
+
+
+	
 
 
 

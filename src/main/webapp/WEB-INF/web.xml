@@ -27,7 +27,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>QuestionControllerServlet</servlet-name>
-    <url-pattern>/QuestionControllerServlet</url-pattern>
+    <url-pattern>/admin/questions</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

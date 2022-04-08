@@ -10,6 +10,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import app.emc.model.Candidate;
+import app.emc.model.Question;
 
 public class CandidateDAO {
 
@@ -127,40 +128,50 @@ public class CandidateDAO {
 	
 	public Candidate getCandidateLoginInfo(String username) throws Exception {
 		
-		Candidate cLoginInfo = null;
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
-		try {
-			
+		try
+		{
 			conn = dataSource.getConnection();
 			
-			String query = "select password,salt from candidates where username=?";
+			String query = "select username, password,salt from candidates where username= ?";
 			
+			//prepare statement
 			stmt = conn.prepareStatement(query);
 			
-			stmt.setString(1, username); 
-			rs = stmt.executeQuery(query);
+			stmt.setString(1,username);
+			//executing sql statement
+		     rs = stmt.executeQuery();
+			
+			
 			if(rs.next()) {
-			    	String password = rs.getString("password");
-			    	String salt = rs.getString("salt");
-			    	
-
-			    	//Create new candidate object with login info
-			    	 cLoginInfo = new Candidate(password,salt);
+				Candidate cLoginInfo = new Candidate();
+				cLoginInfo.setUsername(rs.getString("username"));
+				cLoginInfo.setPassword(rs.getString("password"));
+				cLoginInfo.setSalt(rs.getString("salt"));
+				
+				return cLoginInfo;
 			}
-		   
-					return cLoginInfo;	
-		}
-		
-		finally {
-			//Close JDBC objects
+			
+				return null;
+		    	
+			}
+				
+		finally{
+			
 			rs.close();
 			stmt.close();
 			conn.close();
 			
 		}
+			
+	    	
+	    	
+			
+			
+			
 		
 	}
 	
