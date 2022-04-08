@@ -3,6 +3,7 @@ package app.emc.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,6 +126,51 @@ public class CandidateDAO {
 		}
 		
 	}
+
+	public Candidate getCandidateById(int candidate_id) throws Exception {
+		
+		Candidate candidate = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			//connection to database
+			conn = dataSource.getConnection();
+			//create sql to get selected candidate
+			String query ="select surname,firstname,party,profession,age from candidates where candidate_id=?";
+			//create prepared statement
+			stmt = conn.prepareStatement(query);
+			//set parameter
+			stmt.setInt(1, candidate_id);
+			//execute statement
+			rs = stmt.executeQuery();
+			//retrieve data from resultset
+			if(rs.next()) {
+				
+				String surname = rs.getString("surname");
+				String firstname = rs.getString("firstname");
+				String party = rs.getString("party");
+				String profession = rs.getString("profession");
+		    	int age = rs.getInt("age");
+				
+				//create a candidate object
+				candidate  = new Candidate(candidate_id, surname, firstname, party, profession, age);
+				
+			}else {
+				throw new Exception("Could not find candidate with candidate_id : "+ candidate_id);
+			}
+			
+			
+		return candidate;
+	}finally {
+		//clean up jdbc object
+		rs.close();
+		stmt.close();
+		conn.close();
+	}
+
+	
 	
 	public Candidate getCandidateLoginInfo(String username) throws Exception {
 		
@@ -176,5 +222,33 @@ public class CandidateDAO {
 	}
 	
 
+	}
+	
+	public void updateCandidate(Candidate theCandidate) throws Exception {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn= dataSource.getConnection();
+			
+			String query = "update candidates set surname=?,firstname=?,party=?,profession=?, age=? where candidate_id=?";//surname, firstname, party, profession, age
+			
+			stmt = conn.prepareStatement(query);
+			
+
+			stmt.setString(1,theCandidate.getSurname());
+			stmt.setString(2,theCandidate.getFirstname());
+			stmt.setString(3,theCandidate.getParty());
+			stmt.setString(4,theCandidate.getProfession());
+			stmt.setInt(5,theCandidate.getAge());
+			stmt.setInt(6, theCandidate.getCandidateId());
+
+			stmt.execute();
+					
+		}finally {
+			conn.close();
+			stmt.close();
+		}
+	}
 }
 
