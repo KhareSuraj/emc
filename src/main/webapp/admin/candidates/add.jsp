@@ -8,15 +8,15 @@
 	<div class = "pg-m">
 	    <p class="breadcrumb">
 	      <a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
-	       <a href="CandidateControllerServlet"> Candidates</a>
+	       <a href="/admin/candidates"> Candidates</a>
 	    </p>
      	<h1 class="pg-heading"><i class="fa-solid fa-users"></i> New Candidate</h1>   
      </div>
-	<div class="pg-m">
-		<c:url var= "saveCandidate" value="CandidateControllerServlet">'
+	
+		<c:url var= "saveCandidate" value="/admin/candidates">
 			<c:param name="action" value ="insert"/>
 		</c:url>
-	</div>
+	
 <form class="create-form" action ="${saveCandidate}" method="post">
 		
 		<label for="title" >Surname:</label> <br>
@@ -45,7 +45,7 @@
 	</form>
 
 </main>
-</div>
+
  <%@ include file= "/incl/footer.jsp" %>
 
 

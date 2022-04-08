@@ -8,7 +8,7 @@
 <div class = "pg-m">
 	    <p class="breadcrumb">
 	      <a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
-	       <a href="CandidateControllerServlet"> Candidates</a>
+	       <a href="/admin/candidates"> Candidates</a>
 	    </p>
      	<h1 class="pg-heading"><i class="fa-solid fa-users"></i>Update Candidate</h1>   
      </div>
@@ -41,7 +41,7 @@
 
 </form>
 </main>
-</div>
+
 	
  <%@ include file= "/incl/footer.jsp" %>
 	

@@ -1,4 +1,9 @@
-<%@ include file= "/incl/head.jsp" %>
+ <%@ include file= "/incl/head.jsp" %>
+ 
+ <%@ include file= "/incl/header.jsp" %>
+
+ <%@ include file= "/incl/sidebar.jsp" %>
+ 
 <!-- Setup a URL for form submit action -->
    <c:url var="saveUpdate" value="/admin/questions">
    		<c:param name="action" value="saveupdate" />
@@ -23,5 +28,3 @@
 </form>
 </main>
 <%@ include file= "/incl/footer.jsp" %>
-</body>
-</html>

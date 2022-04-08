@@ -5,7 +5,7 @@
 
 
 <!-- Setup URL FOR add candidate button -->
-	<c:url var="add" value="CandidateControllerServlet">
+	<c:url var="add" value="/admin/candidates">
 		<c:param name ="action" value="add"/>
 	</c:url>
 	<main>
@@ -17,7 +17,7 @@
 		
 		</div>
 		
-	<div class ="datatable pg-m">
+	<div class ="datatable">
 		
 	<table id ="table_id" class="display">
 		<thead>
@@ -43,12 +43,12 @@
 		  		<td> ${candidates.profession}</td>
 		
 		  		<!-- update part -->
-		  		<c:url var="update" value="CandidateControllerServlet">
+		  		<c:url var="update" value="/admin/candidates">
 			  		<c:param name="action" value="update" />
 			  		<c:param name= "CandidateId" value="${candidates.candidateId}" />
 			  	</c:url>
 		  		
-		  		<c:url var="delete" value="CandidateControllerServlet">
+		  		<c:url var="delete" value="/admin/candidates">
 			  		<c:param name="action" value="delete" />
 			  		<c:param name= "CandidateId" value="${candidates.candidateId}" />
 			  	</c:url>
@@ -62,9 +62,7 @@
   	
   		</tbody>
    	</table>
-		
 	</div>
-	
 	</main>
 		
 <%@ include file= "/incl/footer.jsp" %>

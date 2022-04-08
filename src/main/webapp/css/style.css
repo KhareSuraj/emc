@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-    --primary-color:#CB212E;
+    --primary-color:#3299CC;
     --white:#FFFFFF;
     --black:#24272E;
 }
@@ -198,7 +198,7 @@ body{
   }
 
   .btn-danger {
-	  background-color: var(--primary-color);
+	  background-color: #CB212E; 
   }
   
   /* flexing aside */
@@ -232,7 +232,7 @@ body{
 	  color: #ddd;
   }
   .aside_list-item:hover {
-	background-color: #3299CC;
+	background-color: blue;
 	cursor: pointer;
   }
 

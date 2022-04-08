@@ -93,7 +93,7 @@ public class QuestionControllerServlet extends HttpServlet {
 		questionDao.deleteQuestion(question_id);
 		
 		//Send them back to the list question page. 
-		listQuestions(request, response);
+		response.sendRedirect(request.getContextPath()+"/admin/questions");	
 	}
 
 	@Override

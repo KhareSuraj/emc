@@ -1,5 +1,10 @@
 
-<%@ include file= "/incl/head.jsp" %>
+ <%@ include file= "/incl/head.jsp" %>
+ 
+ <%@ include file= "/incl/header.jsp" %>
+
+ <%@ include file= "/incl/sidebar.jsp" %>
+ 
 
 	<!-- Setup URL for ADD QUESTION BUTTON -->
 	<c:url var="add" value="/admin/questions">
@@ -9,7 +14,7 @@
 <main>
  <div class = "pg-m">
         <p class="breadcrumb"><a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></p>
-        <h1 class="pg-heading"><i class="fa-solid fa-book"></i> Questions</h1>
+        <h1 class="pg-heading">Questions<i class="fa-solid fa-question"></i></h1>
         <a href="${add}"><button class=" btn addnew btn-prim"> Add Questions </button></a>
     </div>
 
@@ -37,7 +42,7 @@
    		<c:param name="id" value ="${questions.questionId}"/>;  /questions/?action=update&id=1
    </c:url>
    
-    <c:url var="delete" value="QuestionControllerServlet">
+    <c:url var="delete" value="/admin/questions">
   		<c:param name="action" value="delete" />
   		<c:param name= "QuestionId" value="${questions.questionId}" />
   		</c:url>
@@ -45,7 +50,7 @@
   	<tr>
   		<td> ${questions.question} </td>
   		<td><a class="btn btn-prim" href="${update}">Update</a>
-  		     | <a href="${delete}" onclick="return confirm('Are you sure you want to delete?')"><button class ="btn btn-danger">Delete</button></a>
+  		     <a href="${delete}" onclick="return confirm('Are you sure you want to delete?')"><button class ="btn btn-danger">Delete</button></a>
   		
   		</td>
   		</tr>
@@ -63,5 +68,3 @@
    
 <%@ include file= "/incl/footer.jsp" %>
 
-</body>
-</html>

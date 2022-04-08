@@ -1,5 +1,10 @@
 
-<%@ include file= "/incl/head.jsp" %>
+ <%@ include file= "/incl/head.jsp" %>
+ 
+ <%@ include file= "/incl/header.jsp" %>
+
+ <%@ include file= "/incl/sidebar.jsp" %>
+ 
 <main>
 <div class = "pg-m">
     <p class="breadcrumb">
