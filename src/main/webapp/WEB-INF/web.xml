@@ -50,4 +50,25 @@
     <url-pattern>/demoServlet</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <description></description>
+    <display-name>UserLoginControllerServlet</display-name>
+    <servlet-name>UserLoginControllerServlet</servlet-name>
+    <servlet-class>app.emc.controller.UserLoginControllerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserLoginControllerServlet</servlet-name>
+    <url-pattern>/UserLoginControllerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminLoginControllerServlet</display-name>
+    <servlet-name>AdminLoginControllerServlet</servlet-name>
+    <servlet-class>app.emc.controller.AdminLoginControllerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginControllerServlet</servlet-name>
+    <url-pattern>/admin/login</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
