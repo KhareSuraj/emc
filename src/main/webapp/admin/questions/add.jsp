@@ -1,33 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Add a question</title>
-</head>
-<body>
- <h3>Add a Question</h3>
+
+<%@ include file= "/incl/head.jsp" %>
+<main>
+<div class = "pg-m">
+    <p class="breadcrumb">
+        <a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a> /
+            <a href="QuestionControllerServlet"> Questions</a>
+        </p>
+        <h1 class="pg-heading"><i class="fa-solid fa-book"></i> New Question</h1>
+        
+</div>
+
  	<!-- Setup URL for ADD QUESTION BUTTON -->
 	<c:url var="insert" value="/admin/questions">
+
 		<c:param name="action" value="insert"/>
 	</c:url>
- <form action="${insert}" method = "post">
- 
- 	<table>
- 	<tr>
-	 	<td>Question:</td>
-	 	<td><input type ="text" name="question"/></td>
-	 </tr>
-	 <tr>
-	 	<td><input type ="submit" value="save" class="save" /></td>
-	 </tr>
- 	</table>
+
+ <form class="create-form" action="${insert}" method = "post">
+
+	 	<label for="question">Questions:</label><br>
+	 	<input class= "txtin" type ="text" name="question" size="90"/><br>
+	 
+	 	<input class="btn btn-prim" type = "submit" value="save" class="save" />
+	 
  </form>
- <p>
- 	<a href="/admin/questions">Back to the list</a>
- </p>
+ </main>
+ <%@ include file= "/incl/footer.jsp" %>
+
  
-</body>
-</html>

@@ -1,27 +1,34 @@
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file= "/incl/head.jsp" %>
 
 	<!-- Setup URL for ADD QUESTION BUTTON -->
 	<c:url var="add" value="/admin/questions">
+
 		<c:param name="action" value="add"/>
 	</c:url>
-	<a href="${add}">ADD QUESTION</a>
-	/>
- <table>
-	<tr>
-  		<th>Question</th>
-  		<th>Action</th>
-  	</tr>
-  	
+<main>
+ <div class = "pg-m">
+        <p class="breadcrumb"><a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></p>
+        <h1 class="pg-heading"><i class="fa-solid fa-book"></i> Questions</h1>
+        <a href="${add}"><button class=" btn addnew btn-prim"> Add Questions </button></a>
+    </div>
+
+	
+	
+	
+	<div class = 'datatable'>
+	
+ <table id="table_id" class="display">
+	<thead>
+	
+		<tr>
+	  		<th>Question</th>
+	  		<th>Action</th>
+	  	</tr>
+	</thead>
+	
+	
+  	<tbody>
   <c:forEach var="questions" items="${QUESTIONS_LIST}">
  
    <!-- Setup a URL for update button -->
@@ -34,18 +41,27 @@
   		<c:param name="action" value="delete" />
   		<c:param name= "QuestionId" value="${questions.questionId}" />
   		</c:url>
-		<td>
   		
-  	
   	<tr>
   		<td> ${questions.question} </td>
-  		<td><a href="${update}">Update</a>
-  		     | <a href="${delete}">Delete</a>
+  		<td><a class="btn btn-prim" href="${update}">Update</a>
+  		     | <a href="${delete}" onclick="return confirm('Are you sure you want to delete?')"><button class ="btn btn-danger">Delete</button></a>
   		
   		</td>
-  	</tr>
+  		</tr>
+  		
+		
+  	
   
   </c:forEach>
+  </tbody>
+  
    </table>
+   </div>
+   
+   </main>
+   
+<%@ include file= "/incl/footer.jsp" %>
+
 </body>
 </html>
