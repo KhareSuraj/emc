@@ -27,7 +27,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>QuestionControllerServlet</servlet-name>
-    <url-pattern>/QuestionControllerServlet</url-pattern>
+    <url-pattern>/admin/questions</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -51,12 +51,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AnswerControllerServlet</display-name>
-    <servlet-name>AnswerControllerServlet</servlet-name>
-    <servlet-class>app.emc.controller.AnswerControllerServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AnswerControllerServlet</servlet-name>
-    <url-pattern>/AnswerControllerServlet</url-pattern>
+
   </servlet-mapping>
 </web-app>

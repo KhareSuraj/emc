@@ -1,3 +1,4 @@
+
 <%@ include file= "/incl/head.jsp" %>
 <main>
 <div class = "pg-m">
@@ -9,8 +10,9 @@
         
 </div>
 
-<!-- Setup URL for ADD QUESTION BUTTON -->
-	<c:url var="insert" value="QuestionControllerServlet">
+ 	<!-- Setup URL for ADD QUESTION BUTTON -->
+	<c:url var="insert" value="/admin/questions">
+
 		<c:param name="action" value="insert"/>
 	</c:url>
 
@@ -24,5 +26,5 @@
  </form>
  </main>
  <%@ include file= "/incl/footer.jsp" %>
-</body>
-</html>
+
+ 

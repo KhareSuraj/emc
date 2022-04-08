@@ -1,6 +1,6 @@
 <%@ include file= "/incl/head.jsp" %>
 <!-- Setup a URL for form submit action -->
-   <c:url var="saveUpdate" value="QuestionControllerServlet">
+   <c:url var="saveUpdate" value="/admin/questions">
    		<c:param name="action" value="saveupdate" />
    		<c:param name="id" value ="${QUESTION.questionId}"/>;
    </c:url>
