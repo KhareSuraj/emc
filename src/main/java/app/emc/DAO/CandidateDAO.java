@@ -7,10 +7,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.processing.Completion;
 import javax.sql.DataSource;
 
 import app.emc.model.Candidate;
+import app.emc.model.Question;
 
 public class CandidateDAO {
 
@@ -62,10 +62,7 @@ public class CandidateDAO {
 
 	}
 
-	public List<Candidate> getfirstname() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	public void insertCandidate(Candidate theCandidate) throws Exception {
 		Connection conn=null;
@@ -75,7 +72,7 @@ public class CandidateDAO {
 			//get db connection
 			conn=dataSource.getConnection();
 		//Create Sql for insert
-		String sql="insert into candidates"+"(surname, firstname, party, profession, age, username, password)"+"values(?, ?, ?, ?, ?, ?, ?)";
+		String sql="insert into candidates"+"(surname, firstname, party, profession, age, username, password,salt)"+"values(?, ?, ?, ?, ?, ?, ?,?)";
 		stmt=conn.prepareStatement(sql);
 				//set the param value for the candidate
 		
@@ -86,6 +83,8 @@ public class CandidateDAO {
 		stmt.setInt(5,theCandidate.getAge());
 		stmt.setString(6,theCandidate.getUsername());
 		stmt.setString(7,theCandidate.getPassword());
+		stmt.setString(8,theCandidate.getSalt());
+		
 		//execute sql insert
 		stmt.execute();
 		}
@@ -124,6 +123,55 @@ public class CandidateDAO {
 			stmt.close();
 			conn.close();
 		}
+		
+	}
+	
+	public Candidate getCandidateLoginInfo(String username) throws Exception {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try
+		{
+			conn = dataSource.getConnection();
+			
+			String query = "select username, password,salt from candidates where username= ?";
+			
+			//prepare statement
+			stmt = conn.prepareStatement(query);
+			
+			stmt.setString(1,username);
+			//executing sql statement
+		     rs = stmt.executeQuery();
+			
+			
+			if(rs.next()) {
+				Candidate cLoginInfo = new Candidate();
+				cLoginInfo.setUsername(rs.getString("username"));
+				cLoginInfo.setPassword(rs.getString("password"));
+				cLoginInfo.setSalt(rs.getString("salt"));
+				
+				return cLoginInfo;
+			}
+			
+				return null;
+		    	
+			}
+				
+		finally{
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+			
+		}
+			
+	    	
+	    	
+			
+			
+			
 		
 	}
 	

@@ -171,7 +171,7 @@ public class QuestionControllerServlet extends HttpServlet {
 		
 		questionDao.updateQuestion(uQuestion);
 		
-		response.sendRedirect("QuestionControllerServlet");	
+		response.sendRedirect(request.getContextPath()+"/admin/questions");	
 		
 		
 	}
@@ -184,7 +184,7 @@ public class QuestionControllerServlet extends HttpServlet {
 
 		questionDao.insertQuestion(nQuestion);
 
-		response.sendRedirect("QuestionControllerServlet");
+		response.sendRedirect(request.getContextPath()+"/admin/questions");	
 
 		}
 

@@ -10,7 +10,7 @@
 <body>
  <h3>Add a Question</h3>
  	<!-- Setup URL for ADD QUESTION BUTTON -->
-	<c:url var="insert" value="QuestionControllerServlet">
+	<c:url var="insert" value="/admin/questions">
 		<c:param name="action" value="insert"/>
 	</c:url>
  <form action="${insert}" method = "post">
@@ -26,7 +26,7 @@
  	</table>
  </form>
  <p>
- 	<a href="QuestionControllerServlet">Back to the list</a>
+ 	<a href="/admin/questions">Back to the list</a>
  </p>
  
 </body>
