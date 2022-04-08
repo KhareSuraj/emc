@@ -169,6 +169,7 @@ public class CandidateDAO {
 		stmt.close();
 		conn.close();
 	}
+	}
 
 	
 	
@@ -222,7 +223,6 @@ public class CandidateDAO {
 	}
 	
 
-	}
 	
 	public void updateCandidate(Candidate theCandidate) throws Exception {
 		Connection conn = null;

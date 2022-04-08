@@ -49,8 +49,5 @@
     <servlet-name>demoServlet</servlet-name>
     <url-pattern>/demoServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-
-  </servlet-mapping>
+  
 </web-app>
