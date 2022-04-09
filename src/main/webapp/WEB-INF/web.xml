@@ -49,8 +49,7 @@
     <servlet-name>demoServlet</servlet-name>
     <url-pattern>/demoServlet</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>UserLoginControllerServlet</display-name>
     <servlet-name>UserLoginControllerServlet</servlet-name>
@@ -70,5 +69,14 @@
     <servlet-name>AdminLoginControllerServlet</servlet-name>
     <url-pattern>/admin/login</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>logout</display-name>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>app.emc.controller.LogoutControllerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
 </web-app>

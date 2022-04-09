@@ -4,5 +4,5 @@
       </div>
       <header class="header">
         <div><p>Welcome </p></div>
-        <div class="logout"><a href="../../modules/auth/logout.php"><i class="fa-solid fa-user"> </i> Logout</a> </div>
+        <div class="logout"><a href="${pageContext.request.contextPath}/logout"><i class="fa-solid fa-user"> </i> Logout</a> </div>
       </header>

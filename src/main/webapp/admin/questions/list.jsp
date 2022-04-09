@@ -13,7 +13,7 @@
 	</c:url>
 <main>
  <div class = "pg-m">
-        <p class="breadcrumb"><a href="../main/"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></p>
+        <p class="breadcrumb"><a href="${pageContext.request.contextPath}/admin/dashboard.jsp"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></p>
         <h1 class="pg-heading">Questions<i class="fa-solid fa-question"></i></h1>
         <a href="${add}"><button class=" btn addnew btn-prim"> Add Questions </button></a>
     </div>

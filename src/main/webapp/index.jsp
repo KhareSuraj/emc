@@ -39,10 +39,10 @@
             <input class="button" type="submit"
                      name="login" value="Sign In">
                      
-            <c:if test = "${sessionScope['err'] != null }">
-         <p class="error">${sessionScope['err']}<p>
-      </c:if>
-             
+          <c:if test="${not empty error}">
+    <p class="errorMsg">${error}</p>
+    <c:remove var="error"/>
+</c:if>
           </div> 
     </form> 
 </body>

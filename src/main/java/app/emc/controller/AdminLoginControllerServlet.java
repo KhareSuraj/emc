@@ -70,7 +70,7 @@ public class AdminLoginControllerServlet extends HttpServlet {
 	private void authenciateAdmin(HttpServletRequest request, HttpServletResponse response, String username,String password) throws Exception {
 		
 		Admin admin = adminDao.getAdminLoginInfo(username);
-		HttpSession session = request.getSession();
+		
 		
 		if(admin != null) {
 			
@@ -80,20 +80,21 @@ public class AdminLoginControllerServlet extends HttpServlet {
 			int adminId = admin.getAdminId();
 			
 			if(AuthUtils.checkPassword(hpassword,password, salt)){
-				session.setAttribute("adminId",adminId );
+				HttpSession session = request.getSession();
+				session.setAttribute("LoggedUser",adminId );
 				session.setAttribute("username",ausername );
-				response.getWriter().println("Login Success");
+				response.sendRedirect(request.getContextPath()+"/admin/dashboard.jsp");
 				
 			} else {
 				
-				session.setAttribute("err", "Wrong username or password");
+				request.setAttribute("error", "Wrong username or password");
 				response.sendRedirect(request.getContextPath()+"/admin/login");
 				
 			}	
 			
 		}else {
 			
-			session.setAttribute("err", "Wrong username or password");
+			request.setAttribute("error", "Wrong username or password");
 			response.sendRedirect(request.getContextPath()+"/admin/login");
 			
 			
