@@ -152,7 +152,7 @@ public class CandidateControllerServlet extends HttpServlet {
 		candidateDao.updateCandidate(theCandidate);
 		
 		//send back to main page (the candidate list)
-		response.sendRedirect(request.getContextPath()+"/admin/candidates");
+		response.sendRedirect(request.getContextPath()+"/admin/candidates?msg=Candidate Updated Successfully");
 		
 	}
 
@@ -167,7 +167,7 @@ public class CandidateControllerServlet extends HttpServlet {
 		candidateDao.deleteCandidate(Candidate_id);
 		
 		//send them back to the candidate list-
-		listCandidates (request, response);
+		response.sendRedirect(request.getContextPath()+"/admin/candidates?msg=Candidate Deleted Successfully");;
 		
 		
 		
@@ -208,7 +208,7 @@ public class CandidateControllerServlet extends HttpServlet {
 		candidateDao.insertCandidate(theCandidate);
 		
 		//send back to main page (the candidate list)
-		response.sendRedirect(request.getContextPath()+"/admin/candidates");
+		response.sendRedirect(request.getContextPath()+"/admin/candidates?msg=Candidate Added Successfully");
 		
 		
 		

@@ -18,7 +18,9 @@
         <a href="${add}"><button class=" btn addnew btn-prim"> Add Questions </button></a>
     </div>
 
-	
+	<c:if test="${param.msg != null}">
+         <p class="msg"><c:out value="${param.msg}"></c:out><p>
+      </c:if>
 	
 	
 	<div class = 'datatable'>

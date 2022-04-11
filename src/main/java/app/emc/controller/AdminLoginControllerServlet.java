@@ -87,15 +87,15 @@ public class AdminLoginControllerServlet extends HttpServlet {
 				
 			} else {
 				
-				request.setAttribute("error", "Wrong username or password");
-				response.sendRedirect(request.getContextPath()+"/admin/login");
+				
+				response.sendRedirect(request.getContextPath()+"/admin/login?error=Wrong username or password");
 				
 			}	
 			
 		}else {
 			
-			request.setAttribute("error", "Wrong username or password");
-			response.sendRedirect(request.getContextPath()+"/admin/login");
+			
+			response.sendRedirect(request.getContextPath()+"/admin/login?error=Wrong username or password");
 			
 			
 		}
