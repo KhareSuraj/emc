@@ -1,17 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<%@ include file= "/incl/chead.jsp" %>
+
 <body>
 	<form action="UserLoginControllerServlet" method="post">
-        <div class="login-box">
+        <div class="login-box" style ="">
             <h1>Login</h1>
   
             <div class="textbox">
@@ -19,7 +10,7 @@
                 <input type="text" placeholder="Username"
                          name="username"> 
             </div>
-  
+            
             <div class="textbox">
                 <i class="fa fa-lock" aria-hidden="true"></i>
                 <input type="password" placeholder="Password"
@@ -34,16 +25,16 @@
             	</select> 
             </div>
             
-           
-            
             <input class="button" type="submit"
                      name="login" value="Sign In">
                      
           <c:if test="${not empty error}">
     <p class="errorMsg">${error}</p>
     <c:remove var="error"/>
-</c:if>
-          </div> 
-    </form> 
+	</c:if>
+   </div> 
+</form> 
+
 </body>
 </html>
+
