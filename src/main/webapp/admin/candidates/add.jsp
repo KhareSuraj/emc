@@ -20,25 +20,25 @@
 <form class="create-form" action ="${saveCandidate}" method="post">
 		
 		<label for="title" >Surname:</label> <br>
-		<input class ="txtin" id="title" type="text" name="surname" size="90"/><br>
+		<input class ="txtin" id="title" type="text" name="surname" size="90" required/><br>
 					
 		<label for ="title">Firstname:</label><br>
-		<input class ="txtin" id="title" type="text" name="firstname" size="90"/><br>
+		<input class ="txtin" id="title" type="text" name="firstname" size="90" required/><br>
 		
 		<label>Party:</label><br>
-		<input class ="txtin" id="title" type="text" name="party" size="90"/><br>
+		<input class ="txtin" id="title" type="text" name="party" size="90" required/><br>
 	
 		<label>Profession:</label><br>
-		<input class ="txtin" id="title" type="text" name="profession" size="90"/><br>
+		<input class ="txtin" id="title" type="text" name="profession" size="90" required/><br>
 	
 		<label>Age:</label><br>
-		<input class="txtin" id="title" type="int"name="age" size="90"/><br>
+		<input class="txtin" id="title" type="number"name="age" size="90" required/><br>
 	
 		<label>Username:</label><br>
-		<input class ="txtin" id="title" type="text" name="username" size="90"/><br>
+		<input class ="txtin" id="title" type="text" name="username" size="90" required/><br>
 	
 		<label>Password:</label><br>
-		<input class ="txtin" id="title" type="password" name="password" size="90"/><br>
+		<input class ="txtin" id="title" type="password" name="password" size="90" required/><br>
 	
 		<input class="btn btn-prim"  type="submit" value="Save" class="save"/>
 

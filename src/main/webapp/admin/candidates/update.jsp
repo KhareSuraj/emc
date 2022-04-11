@@ -21,19 +21,19 @@
 <form class="create-form" action ="${saveUpdate}" method="post">
 		
 		<label for="title" >Surname:</label> <br>
-		<input class ="txtin" id="title" type="text" name="surname" size="90" value="${ CANDIDATE.surname}"/><br>
+		<input class ="txtin" id="title" type="text" name="surname" size="90" value="${ CANDIDATE.surname}"required/><br>
 					
 		<label for ="title">Firstname:</label><br>
-		<input class ="txtin" id="title" type="text" name="firstname" size="90" value="${ CANDIDATE.firstname}"/><br>
+		<input class ="txtin" id="title" type="text" name="firstname" size="90" value="${ CANDIDATE.firstname}"required/><br>
 		
 		<label>Party:</label><br>
-		<input class ="txtin" id="title" type="text" name="party" size="90" value="${ CANDIDATE.party}"/><br>
+		<input class ="txtin" id="title" type="text" name="party" size="90" value="${ CANDIDATE.party}"required/><br>
 	
 		<label>Profession:</label><br>
-		<input class ="txtin" id="title" type="text" name="profession" size="90" value="${ CANDIDATE.profession}"/><br>
+		<input class ="txtin" id="title" type="text" name="profession" size="90" value="${ CANDIDATE.profession}"required/><br>
 	
 		<label>Age:</label><br>
-		<input class="txtin" id="title" type="int"name="age" size="90" value="${ CANDIDATE.age}"/><br>
+		<input class="txtin" id="title" type="number"name="age" size="90" value="${ CANDIDATE.age}"required/><br>
 	
 		
 	

@@ -24,9 +24,9 @@
  <form class="create-form" action="${insert}" method = "post">
 
 	 	<label for="question">Questions:</label><br>
-	 	<input class= "txtin" type ="text" name="question" size="90"/><br>
+	 	<input class= "txtin" type ="text" name="question" size="90" required/><br>
 	 
-	 	<input class="btn btn-prim" type = "submit" value="save" class="save" />
+	 	<input class="btn btn-prim" type = "submit" value="save" class="save" required />
 	 
  </form>
  </main>
