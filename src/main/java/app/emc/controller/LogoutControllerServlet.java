@@ -26,11 +26,22 @@ public class LogoutControllerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//delete session
-		request.getSession().invalidate();
 		
+		
+		//read the "command" parameter
+		String user= request.getParameter("user");
 		//Redirect to login page
-		response.sendRedirect(request.getContextPath()+"/admin/login");
+		if (user.equals("admin")) {
+			//delete session
+			request.getSession().invalidate();
+			response.sendRedirect(request.getContextPath()+"/admin/login");
+		}
+		else if(user.equals("candidate")) {
+			//delete session
+			request.getSession().invalidate();
+			response.sendRedirect(request.getContextPath());
+		}
+		
 	}
 
 	/**

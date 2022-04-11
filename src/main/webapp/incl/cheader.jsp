@@ -4,5 +4,5 @@
       </div>
       <header class="header">
         <div><p>Welcome </p></div>
-        <div class="logout"><a href="${pageContext.request.contextPath}/logout?user=admin"><i class="fa-solid fa-user"> </i> Logout</a> </div>
+        <div class="logout"><a href="${pageContext.request.contextPath}/logout?user=candidate"><i class="fa-solid fa-user"> </i> Logout</a> </div>
       </header>

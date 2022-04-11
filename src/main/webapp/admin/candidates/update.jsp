@@ -13,7 +13,7 @@
      	<h1 class="pg-heading"><i class="fa-solid fa-users"></i>Update Candidate</h1>   
      </div>
      
-     <c:url var="saveUpdate" value="CandidateControllerServlet">
+     <c:url var="saveUpdate" value="/admin/candidates">
    		<c:param name="action" value="saveupdate" />
    		<c:param name="candidate_id" value ="${CANDIDATE.candidateId}"/>;
 	</c:url>
@@ -37,7 +37,7 @@
 	
 		
 	
-		<input class="btn btn-prim"  type="submit" value="Save" class="save"/>
+		<input class="btn btn-prim"  type="submit" value="Save" class="submit"/>
 
 </form>
 </main>

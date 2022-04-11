@@ -79,4 +79,15 @@
     <servlet-name>logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AnswerControllerServlet</display-name>
+    <servlet-name>AnswerControllerServlet</servlet-name>
+    <servlet-class>app.emc.controller.AnswerControllerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AnswerControllerServlet</servlet-name>
+    <url-pattern>/candidate/questions</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -23,7 +23,7 @@ public class CandidateControllerServlet extends HttpServlet {
     private CandidateDAO candidateDao;
     
     @Resource(name="jdbc/emc")
-	private DataSource dataSource;
+	private DataSource dataSource; //dataSource: object is the preferred means of getting a connection.
 
     @Override
 	public void init() throws ServletException {
@@ -152,7 +152,7 @@ public class CandidateControllerServlet extends HttpServlet {
 		candidateDao.updateCandidate(theCandidate);
 		
 		//send back to main page (the candidate list)
-		response.sendRedirect("CandidateControllerServlet");
+		response.sendRedirect(request.getContextPath()+"/admin/candidates");
 		
 	}
 
@@ -208,7 +208,7 @@ public class CandidateControllerServlet extends HttpServlet {
 		candidateDao.insertCandidate(theCandidate);
 		
 		//send back to main page (the candidate list)
-		response.sendRedirect("CandidateControllerServlet");
+		response.sendRedirect(request.getContextPath()+"/admin/candidates");
 		
 		
 		

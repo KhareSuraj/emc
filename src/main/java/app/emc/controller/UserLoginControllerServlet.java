@@ -83,7 +83,7 @@ public class UserLoginControllerServlet extends HttpServlet {
 	private void authenciateCandidate(HttpServletRequest request, HttpServletResponse response, String username,String password) throws Exception {
 		
 			Candidate cLoginInfo = candidateDao.getCandidateLoginInfo(username);
-			HttpSession session = request.getSession();
+			
 			
 			if(cLoginInfo != null) {
 				
@@ -92,20 +92,21 @@ public class UserLoginControllerServlet extends HttpServlet {
 				int candidateId = cLoginInfo.getCandidateId();
 				
 				if(AuthUtils.checkPassword(hpassword,password, salt)){
+					HttpSession session = request.getSession();
 					session.setAttribute("candidateId",candidateId );
-					response.getWriter().println("Login Success");
+					response.sendRedirect(request.getContextPath()+"/candidate/questions");
 					
 				} else {
 					
-					session.setAttribute("err", "Wrong username or password");
-					response.sendRedirect(request.getContextPath());
+					
+					doGet(request,response);
 					
 				}	
 				
 			}else {
 				
-				session.setAttribute("err", "Wrong username or password");
-				response.sendRedirect(request.getContextPath());
+			
+				doGet(request,response);
 				
 				
 			}
