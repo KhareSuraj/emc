@@ -8,13 +8,13 @@
             <div class="textbox">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <input type="text" placeholder="Username"
-                         name="username"> 
+                         name="username" required> 
             </div>
             
             <div class="textbox">
                 <i class="fa fa-lock" aria-hidden="true"></i>
                 <input type="password" placeholder="Password"
-                         name="password"> 
+                         name="password" required> 
             </div>
             
             <div class="dropdown">

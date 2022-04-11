@@ -22,7 +22,7 @@
  
 <form class ="create-form" action="${saveUpdate}" method="post">
 	<label for ="question">Question:</label><br>
-	<input class="txtin" type="text" name ="question" size="90" value ="${QUESTION.question}"> <br> <br>
+	<input class="txtin" type="text" name ="question" size="90" value ="${QUESTION.question}"required> <br> <br>
 	<input class="btn btn-prim"  type="submit" value="save" class="submit">
 
 </form>
