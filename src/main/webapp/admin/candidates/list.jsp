@@ -17,6 +17,10 @@
 		
 		</div>
 		
+		<c:if test="${param.msg != null}">
+         <p class="msg"><c:out value="${param.msg}"></c:out><p>
+      </c:if>
+		
 	<div class ="datatable">
 		
 	<table id ="table_id" class="display">

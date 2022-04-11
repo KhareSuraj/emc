@@ -69,7 +69,10 @@ public class UserLoginControllerServlet extends HttpServlet {
 		try {
 			if(role.equals("candidate")) {
 				authenciateCandidate(request,response,username,password);
+			}else if(role.equals("voter")) {
+				response.sendRedirect(request.getContextPath()+"?error=Voter features under development");
 			}
+			
 			
 			
 		}
@@ -99,14 +102,14 @@ public class UserLoginControllerServlet extends HttpServlet {
 				} else {
 					
 					
-					doGet(request,response);
+					response.sendRedirect(request.getContextPath()+"?error=Wrong username or password");
 					
 				}	
 				
 			}else {
 				
 			
-				doGet(request,response);
+				response.sendRedirect(request.getContextPath()+"?error=Wrong username or password");
 				
 				
 			}

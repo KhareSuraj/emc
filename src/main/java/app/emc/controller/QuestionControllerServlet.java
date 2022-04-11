@@ -93,7 +93,7 @@ public class QuestionControllerServlet extends HttpServlet {
 		questionDao.deleteQuestion(question_id);
 		
 		//Send them back to the list question page. 
-		response.sendRedirect(request.getContextPath()+"/admin/questions");	
+		response.sendRedirect(request.getContextPath()+"/admin/questions?msg=Question Deleted Successfully");	
 	}
 
 	@Override
@@ -171,7 +171,7 @@ public class QuestionControllerServlet extends HttpServlet {
 		
 		questionDao.updateQuestion(uQuestion);
 		
-		response.sendRedirect(request.getContextPath()+"/admin/questions");	
+		response.sendRedirect(request.getContextPath()+"/admin/questions?msg=Question Updated Successfully");	
 		
 		
 	}
@@ -184,7 +184,7 @@ public class QuestionControllerServlet extends HttpServlet {
 
 		questionDao.insertQuestion(nQuestion);
 
-		response.sendRedirect(request.getContextPath()+"/admin/questions");	
+		response.sendRedirect(request.getContextPath()+"/admin/questions?msg=Question added Successfully");	
 
 		}
 

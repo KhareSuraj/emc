@@ -18,10 +18,12 @@
             </div>
             
             <input class="button" type="submit"
-                     name="login" value="Sign In">
-	 <c:if test = "${sessionScope['err'] != null }">
-         <p class="errorMsg">${sessionScope['err']}<p>
+                     name="login" value="Sign In"> <br>
+                     
+                      <c:if test="${param.error != null}">
+         <p class="errorMsg"><c:out value="${param.error}"></c:out><p>
       </c:if>
+	 
           </div> 
     </form> 
 

@@ -26,13 +26,13 @@
             </div>
             
             <input class="button" type="submit"
-                     name="login" value="Sign In">
+                     name="login" value="Sign In"> <br>
                      
-          <c:if test="${not empty error}">
-    <p class="errorMsg">${error}</p>
-    <c:remove var="error"/>
-	</c:if>
+       <c:if test="${param.error != null}">
+         <p class="errorMsg"><c:out value="${param.error}"></c:out><p>
+      </c:if>
    </div> 
+   
 </form> 
 
 </body>

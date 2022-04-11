@@ -139,6 +139,7 @@ body{
   .errorMsg {
 	color: #CB212E;
 	background-color: whitesmoke;
+	margin-top:10px;
 	padding: 10px 10px 10px 10px;
   }
   .datatable{
